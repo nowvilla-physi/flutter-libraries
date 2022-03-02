@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_libraries/flutter_screenutil.dart';
 import 'package:flutter_libraries/shared_preferences.dart';
 
 import 'next.dart';
@@ -25,6 +26,8 @@ class MyApp extends StatelessWidget {
             const NextPage(title: 'Nextページ'),
         '/shared_preferences': (BuildContext context) =>
         const SharedPreferencesPage(title: 'shared_preferences'),
+        '/flutter_screenutil': (BuildContext context) =>
+        const FlutterScreenUtilPage(title: 'flutter_screenutil'),
       },
     );
   }
@@ -75,6 +78,19 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               onPressed: () {
                 Navigator.of(context).pushNamed('/shared_preferences');
+              },
+            ),
+            OutlinedButton(
+              child: const Text('flutter_screenutilのサンプルへ'),
+              style: OutlinedButton.styleFrom(
+                primary: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                side: const BorderSide(),
+              ),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/flutter_screenutil');
               },
             ),
           ],
