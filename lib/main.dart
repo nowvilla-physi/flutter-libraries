@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_libraries/shared_preferences.dart';
 
 import 'next.dart';
 
@@ -22,6 +23,8 @@ class MyApp extends StatelessWidget {
         '/': (BuildContext context) => const MyHomePage(title: 'initial page'),
         '/next/page': (BuildContext context) =>
             const NextPage(title: 'Nextページ'),
+        '/shared_preferences': (BuildContext context) =>
+        const SharedPreferencesPage(title: 'shared_preferences'),
       },
     );
   }
@@ -59,6 +62,19 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               onPressed: () {
                 Navigator.of(context).pushNamed('/next/page');
+              },
+            ),
+            OutlinedButton(
+              child: const Text('shared_preferencesのサンプルへ'),
+              style: OutlinedButton.styleFrom(
+                primary: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                side: const BorderSide(),
+              ),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/shared_preferences');
               },
             ),
           ],
