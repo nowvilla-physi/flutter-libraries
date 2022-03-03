@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_libraries/flutter_screenutil.dart';
 import 'package:flutter_libraries/shared_preferences.dart';
 
+import 'env.dart';
 import 'next.dart';
 
-void main() {
+Future main() async {
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
@@ -28,6 +31,8 @@ class MyApp extends StatelessWidget {
         const SharedPreferencesPage(title: 'shared_preferences'),
         '/flutter_screenutil': (BuildContext context) =>
         const FlutterScreenUtilPage(title: 'flutter_screenutil'),
+        '/flutter_dotenv': (BuildContext context) =>
+        const EnvPage(title: 'flutter_dotenv'),
       },
     );
   }
@@ -91,6 +96,19 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               onPressed: () {
                 Navigator.of(context).pushNamed('/flutter_screenutil');
+              },
+            ),
+            OutlinedButton(
+              child: const Text('flutter_dotenvのサンプルへ'),
+              style: OutlinedButton.styleFrom(
+                primary: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                side: const BorderSide(),
+              ),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/flutter_dotenv');
               },
             ),
           ],
